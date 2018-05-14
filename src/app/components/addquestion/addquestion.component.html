@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<br><br>
+
+<div id="container" class="container">
+<form class="card p-1" dir="rtl" (ngSubmit)="onSubmit()">
+<div class="col-md-12 order-md-5">
+<h4 class="mb-3 text-right">إضافة سؤال</h4>
+<form #signupForm="ngForm">
+  <div class="row">
+    <div class="col-md-12 mb-12 text-right">
+      <label for="name">السؤال</label>
+      <input type="text" class="form-control"  [(ngModel)]="question.name" #name="ngModel"
+      name="name"  id="name"  minlength=4 required>
+      <div *ngIf="name?.errors && name.touched" class="alert alert-danger text-right">
+     تأكد أن المعلومات صحيحة
+      </div>
+    </div>
+    </div>
+
+
+  <hr class="mb-4">
+  <button class="btn btn-primary btn-lg btn-block"  (click)="onSubmit()" type="submit" [disabled]="!signupForm.form.valid"  >موافق</button>
+
+</form>
+</div>
+

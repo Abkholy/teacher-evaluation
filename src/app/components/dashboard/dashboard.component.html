@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<!-- <div  class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h5 class="display-4 text-black-50  text-center">تقييم أعضاء هيئة التدريس</h5>
+    <p class="lead text-danger  text-right">هذا التقييم غير تابع لأي جهة</p>
+    <p class="lead text-danger text-right">لا يتم جمع بيانات أو معلومات المصوتين</p>
+    <p class="lead text-danger text-right">جميع البيانات متاحة للجمهور</p>
+    <button type="button" class="btn btn-primary btn-lg" routerLink="rating">بدء التقييم</button>
+
+  </div>
+</div> -->
+
+
+
+<div class="site-wrapper">
+
+  <div class="site-wrapper-inner">
+
+    <div class="container">
+
+      <div class="inner cover">
+        <h1 class="cover-heading text-white text-right">تقييم أعضاء هيئة التدريس</h1>
+        <p class="lead text-warning  text-right">هذا التقييم غير تابع لأي جهة</p>
+        <p class="lead text-warning text-right">لا يتم جمع بيانات أو معلومات المصوتين</p>
+        <p class="lead text-warning text-right">جميع البيانات متاحة للجمهور</p>
+        <div class="input-group mb-3" dir="rtl">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">كود الطالب</span>
+          </div>
+          <input type="text" class="form-control" [(ngModel)]="studentID" #stID=ngModel >
+        </div>
+          <a class="btn btn-lg btn-default"
+          popover="بضغطك هنا توافق على الشروط والاحكام"
+          triggers="mouseenter:mouseleave"
+          (click)="id(stID.value)"
+          >موافق</a>
+      </div>
+
+      <!-- routerLink="rating" -->
+
+  </div>
+
+</div>

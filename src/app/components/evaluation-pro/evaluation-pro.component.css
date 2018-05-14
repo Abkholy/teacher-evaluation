@@ -1,0 +1,30 @@
+.jumbotron{
+  background-image: url("../../../assets/img/backprofile.jpeg");
+  background-size: cover;
+}
+.container{
+  align-self: auto;
+  text-align: right
+}
+.pb-cmnt-container {
+  margin-top: 0;
+}
+.pb-cmnt-textarea {
+  color: red;
+  resize: true;
+  text-align: right;
+  padding: 10px;
+  height: 200px;
+  width: 100%;
+  border: 2px solid gray;
+}
+.card {
+  padding: 10px;
+  text-align: left;
+}
+.rate {
+  text-shadow: black;
+}
+.list-group-item:hover{
+  background: silver;
+}

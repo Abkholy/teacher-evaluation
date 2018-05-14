@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+  <div class="row">
+    <div class="col">
+      <h1 class="display-5 font-italic text-right">{{position}}. {{name}} </h1>
+      <p class="text-right lead my-3">{{position}} في قسم {{department}}</p>
+    </div>
+    <div class="col">
+      <img class="rounded border-light" src="{{pic}}" height=200px alt="">
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-5" style="height:400px;background-color: whitesmoke">
+      <br>
+      <h2 class="text-center text-white bg-dark ">تقييم {{position}}</h2>
+      <div *ngFor="let ques of question">
+
+        <h5 class="text-success text-right ">{{ques.name}}</h5>
+        <rating  [max]="10" (click)="onSubmit(ques.id , name, ques.range)" [(ngModel)]="ques.range" [customTemplate]="tt" style="font-size: 1.5pt; ; font-size-adjust: inherit"></rating>
+        <b> &nbsp; (
+          <i>نقاط {{ques.range}}</i>)</b>
+        <ng-template #tt let-i="index" let-v="value">
+          <button class="btn btn-{{i < v ? 'warning' : 'default'}}">
+            {{i
+            < v ? '&#9899;' : '&#9898;'}} </button>
+        </ng-template>
+        <hr>
+      </div>
+
+
+    </div>
+    <div class="col-sm-7">
+      <div class="row" dir="rtl">
+        <h5 class="text-right text-danger">موقف أو تعليق على {{position}} {{name}}</h5>
+        <div class="container pb-cmnt-container shadow-lg p-3 mb-5 bg-white rounded" dir="rtl">
+          <div class="row">
+            <div class="col-md-12 offset-md-3">
+              <div class="card">
+                <div class="card-block">
+                  <textarea placeholder="أكتب تعليقاً" id="commment" [(ngModel)]="cmnt" #comm="ngModel" class="pb-cmnt-textarea"></textarea>
+                  <div class="btn-group ">
+                    <button class="btn btn-primary" [disabled]="commentStatus" (click)=addComent(cmnt) type="button">نشر</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-group"  *ngFor="let cmnt of comment$ ; let i =index" data-index="cmnt.id" >
+        <a class="list-group-item list-group-item-action flex-column align-items-start ">
+          <div class="d-flex w-100 justify-content-between ">
+            <div class="mb-1">
+              <button  name="like"  (click)="likeHandler( i , cmnt.likes , cmnt.id , cmnt.comment )" class="btn btn-success" >
+                <i class="fas fa-thumbs-up">  {{cmnt.likes}}
+                </i>
+              </button>
+              <button name="disklike"
+               (click)="active = i" (click)="dislikeHandler( i ,cmnt.dislikes , cmnt.id , cmnt.comment)" class="btn btn-danger">
+                <i class="fas fa-thumbs-down">  {{cmnt.dislikes*-1}}</i>
+              </button>
+            </div>
+
+            <small class="text-muted">{{cmnt.id | date: "dd/MM/yyyy | hh:mm a" }} </small>
+          </div>
+          <p class="mb-1">{{cmnt.comment}}</p>
+          <small class="text-danger">{{cmnt.userId}}</small>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+

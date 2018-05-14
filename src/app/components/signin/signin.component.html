@@ -1,0 +1,22 @@
+
+    <div class="container">
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="../../../assets/img/backprofile.jpeg" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" (submit)="mySubmit(email,password)">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control" name="email" [(ngModel)]="email" placeholder="Email address" required autofocus>
+                <input type="password" id="inputPassword" name="password" [(ngModel)]="password" class="form-control" placeholder="Password" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> تذكرني
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" >دخول</button>
+            </form>
+            <a href="#"  class="forgot-password">
+هل نسيت كلمة السر ؟            </a>
+        </div>
+    </div>
+
+

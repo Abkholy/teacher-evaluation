@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+<div class="card-columns">
+  <div class="card" *ngFor="let teacher of teacher" >
+    <img class="card-img-top" src="{{teacher.pic}}" alt="صورة ع.ه.ت">
+    <div class="card-body">
+      <h5 class="card-title text-right">{{teacher.name}}</h5>
+      <p class="card-text text-right">{{teacher.position}} من قسم {{teacher.department}}</p>
+      <button type="button"  [routerLink]="['/evaluation/'+teacher.id]" class="btn btn-outline-danger btn-sm btn-block">صفحة التقييم</button>
+    </div>
+  </div>
+
+
+</div>
+</div>

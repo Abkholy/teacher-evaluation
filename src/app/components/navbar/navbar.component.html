@@ -1,0 +1,54 @@
+<!-- <nav dir="rtl" class="navbar fixed-bottom navbar-light bg-transparent">
+    <a class="navbar-brand">جميع الحقوق محفوظة</a>
+  </nav> -->
+  <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-light bg-faded text-right" dir="rtl">
+    <div class="container text-right">
+      <button aria-controls="navbarsExampleContainer" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right text-right" data-target="#navbarsExampleContainer" data-toggle="collapse" type="button"><span class="navbar-toggler-icon text-right"></span></button><a class="navbar-brand" href="#"routerLink="/rating" > تقييم أعضاء هيئة التدريس</a>
+      <div class="collapse navbar-collapse" id="navbarsExampleContainer">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-right" data-toggle="dropdown" id="dropdown02" *ngIf="isLogIn">أعضاء هيئة التدريس</a>
+            <div aria-labelledby="dropdown02" class="dropdown-menu">
+                <a class="dropdown-item" href="#" routerLink="/addteacher" *ngIf="isLogIn">إضافة</a>
+
+                <a class="dropdown-item" href="#" routerLink="/teachers" *ngIf="isLogIn">عرض أعضاء هيئة التدريس</a>
+
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-right" data-toggle="dropdown" id="dropdown02" *ngIf="isLogIn">الأسئلة</a>
+            <div aria-labelledby="dropdown02" class="dropdown-menu">
+                <a class="dropdown-item" href="#" routerLink="/addquestion" *ngIf="isLogIn">إضافة</a>
+
+                <a class="dropdown-item" href="#" routerLink="/question" *ngIf="isLogIn">عرض</a>
+
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-right" data-toggle="dropdown" id="dropdown02" *ngIf="isLogIn">الطلاب</a>
+            <div aria-labelledby="dropdown02" class="dropdown-menu">
+                <a class="dropdown-item" href="#" routerLink="/addStudent"*ngIf="isLogIn">إضافة طالب</a>
+
+                <a class="dropdown-item" href="#" routerLink="/students" *ngIf="isLogIn">عرض الطلاب</a>
+
+            </div>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Events</a>
+          </li>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Crowdfunding</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li> -->
+        </ul>
+        <form class="form-inline my-2 my-md-0">
+          <a class="mr-sm-2" href="#"><button class="btn btn-sm" *ngIf="!isLogIn" routerLink="/login" >دخول</button></a>
+          <a class="mr-sm-2" href="#"><button class="btn btn-sm" *ngIf="isLogIn" (click)="onClick()" >خروج</button></a>
+        </form><!--<form class="form-inline my-2 my-md-0"><input class="form-control mr-sm-2" placeholder="Search" type="text"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></form>-->
+      </div>
+    </div>
+  </nav>

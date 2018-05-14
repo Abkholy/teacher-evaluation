@@ -1,0 +1,114 @@
+<app-navbar></app-navbar>
+<div id="container" class="container">
+<form class="card p-1" dir="rtl" (ngSubmit)="onSubmit()">
+<div class="col-md-12 order-md-5">
+<h4 class="mb-3 text-right">بيانات العضو</h4>
+<form #signupForm="ngForm">
+  <div class="row">
+    <div class="col-md-12 mb-12 text-right">
+      <label for="name">إسم عضو هيئة التدريس</label>
+      <input type="text" class="form-control"      [(ngModel)]="teacher.name" #teacherName="ngModel"
+      name="name"  id="name"  minlength=10 required>
+      <div *ngIf="teacherName?.errors && teacherName.touched" class="alert alert-danger text-right">
+     تأكد أن المعلومات صحيحة
+      </div>
+    </div>
+    </div>
+
+
+
+  <div class="row">
+    <div class="col-md-6 mb-6 text-right">
+      <label for="department text-right">القسم</label>
+      <select class="custom-select d-block w-100" id="department" [(ngModel)]="teacher.department" #teacherDepartment="ngModel" name="department" required>
+        <option value="" disabled>إختر القسم</option>
+        <option>إتصالات</option>
+        <option>حاسبات</option>
+        <option>عمارة</option>
+        <option>ميكانيكا</option>
+      </select>
+      <div *ngIf="teacherDepartment?.errors && teacherDepartment.touched" class="alert alert-danger text-right">
+القسم مطلوب
+         </div>
+    </div>
+
+    <div class="col-md-6 mb-6 text-right">
+      <label for="position">منصب عضو هيئة التدريس</label>
+      <select class="custom-select d-block w-100" id="position" [(ngModel)]="teacher.position" #teacherPos ="ngModel" name="position"  required>
+        <option value="" disabled>إختر المنصب</option>
+        <option>عميد الأكاديمية</option>
+        <option>وكيل الأكاديمية</option>
+        <option>رئيس قسم</option>
+        <option>دكتور</option>
+        <option>مهندس</option>
+        <option>فني معمل</option>
+      </select>
+      <div *ngIf="teacherPos?.errors && teacherPos.touched" class="alert alert-danger text-right">
+منصب عضو هيئة التدريس مطلوب
+           </div>
+    </div>
+   </div>
+
+<hr class="mb-4">
+<label for="pic" class="text-center text-danger" dir="rtl">عضو هيئة التدريس</label>
+<div class="dropzone"
+dropZone
+(hovered)="toggleHover($event)"
+(dropped)="start($event.target.files)"
+[class.hovering]="isHovering">
+<h3>أسقط صورة عضو هيئة التدريس هنا</h3>
+<div class="file">
+   <label class="file-label">
+   <input class="file-input"   [(ngModel)]="teacher.pic"
+   #teacherPic="ngModel"
+   name="pic" type="file" (change)="start($event.target.files)">
+     <span class="file-cta">
+       <span class="file-icon">
+         <i class="fa fa-upload"></i>
+       </span>
+       <span class="file-label">
+         أو إختر صورة من مسار
+       </span>
+     </span>
+   </label>
+ </div>
+ <div *ngIf="teacherPic?.errors && teacherPic.touched" class="alert alert-danger text-right">
+الصورة مطلوبة
+     </div>
+</div>
+<div *ngIf="percentage | async as pct">
+
+<progress class="progress-striped active"
+          [value]="pct"
+          type="danger"
+          max="100">
+</progress>
+
+
+
+{{ pct | number }}%
+
+</div>
+
+
+<div *ngIf="snapshot | async as snap">
+{{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}
+<div *ngIf="downloadURL | async as url">
+  <!-- <img [src]="url"><br> -->
+  <!-- <a [href]="url" target="_blank" rel="noopener">تنزيل</a> -->
+</div>
+
+<button (click)="task.pause()" class="button is-warning" [disabled]="!isActive(snap)">إيقاف</button>
+<button (click)="task.cancel()" class="button is-danger" [disabled]="!isActive(snap)">إلغاء</button>
+<button (click)="task.resume()" class="button is-info"   [disabled]="!(snap?.state === 'paused')">إكمال</button>
+
+</div>
+
+
+
+  <hr class="mb-4">
+  <button class="btn btn-primary btn-lg btn-block"  (click)="onSubmit()" type="submit" [disabled]="!signupForm.form.valid"  >موافق</button>
+
+</form>
+</div>
+
